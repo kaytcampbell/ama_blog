@@ -20,8 +20,15 @@
       <li>Facebook</li>
       <li>Twitter</li>
     </ul>
-
-    <p>Admin Login</p>
+    <% if user_signed_in? %>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      </li>
+    <% else %>
+      <li>
+      <%= link_to('Login', new_user_session_path)  %>
+      </li>
+    <% end %>
   </aside>
   <main class="main-content">
     <div class="header">
@@ -32,9 +39,10 @@
       <% else %>
         <h2><%= link_to "Back to All Posts", root_path %></h2>
       <% end %>
-
-      <button class="button"><%= link_to "New Post", new_post_path %></button>
-      <button class="button">Log Out</button>
+      <% if user_signed_in? %>
+        <button class="button"><%= link_to "New Post", new_post_path %></button>
+        <button class="button">Log Out</button>
+      <% end %>
     </div>
 
     <% flash.each do |name, msg| %>
