@@ -45,4 +45,6 @@ group :development do
   gem 'spring'
 
   gem 'devise', '~> 3.5.0'
+
+  gem 'foundation-rails'
 end

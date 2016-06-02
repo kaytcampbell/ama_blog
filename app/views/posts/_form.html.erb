@@ -9,15 +9,15 @@
       <% end %>
     </ul>
   <% end %>
-  <p>
-    <%= f.label :title %><br>
+  <div class="form__row">
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
+  </div>
+  <div class="form__row">
+    <%= f.label :body %>
     <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  </div>
+  <div class="form__row">
+    <%= f.submit class: "button" %>
+  </div>
 <% end %>

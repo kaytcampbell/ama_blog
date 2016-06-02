@@ -1,0 +1,53 @@
+$blue: #0f3c62;
+$blue-grey: #9aaec0;
+$white: #ffffff;
+$base-margin: 0.9375rem;
+$base-padding: 0.9375rem;
+body{
+  background: image-url('arrows-bg.png');
+  background-repeat: repeat;
+  border-top: 40px solid $blue;
+  height: auto;
+}
+textarea{
+  min-height: 150px;
+}
+.logo{
+
+}
+.link-light{
+  color: $blue-grey;
+  text-decoration: underline;
+}
+.button{
+  border: 3px solid $blue-grey;
+}
+.page-header{
+  margin-top: $base-margin*2;
+}
+.nav-buttons{
+  text-align: right;
+  padding-top: $base-padding;
+}
+.sub-heading{
+  font-size: 1rem;
+  color: $blue-grey;
+}
+.main-content{
+
+}
+.content-container{
+  background: $white;
+  padding: $base-padding;
+  margin-bottom: $base-margin*3;
+}
+
+.post{
+  &__button{
+    @extend .button;
+
+    &--right{
+      float: right;
+    }
+  }
+}
