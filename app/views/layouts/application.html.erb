@@ -13,7 +13,7 @@
     <ul>
       <li class="category">Website</li>
       <li><%= link_to "Blog", root_path %></li>
-      <li>About</li>
+      <li><%= link_to "About", about_path %></li>
     </ul>
     <ul>
       <li class="category">Social</li>
@@ -25,7 +25,14 @@
   </aside>
   <main class="main-content">
     <div class="header">
-      <p><%= link_to 'All Posts', posts_path %></p>
+      <% if current_page?(root_path) %>
+        <h1>All Posts</h1>
+      <% elsif current_page?(about_path) %>
+        <h1>About</h1>
+      <% else %>
+        <h2><%= link_to "Back to All Posts", root_path %></h2>
+      <% end %>
+
       <button class="button"><%= link_to "New Post", new_post_path %></button>
       <button class="button">Log Out</button>
     </div>
