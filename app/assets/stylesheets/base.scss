@@ -22,6 +22,12 @@ a {
   position: fixed;
   width: 100%;
   border-bottom: 10px solid $white;
+  @include breakpoint(small only) {
+    height: 10px;
+  }
+  @include breakpoint(medium only) {
+    height: 20px;
+  }
 }
 .bottom-horz{
   background: #ffffff image-url("horizontal-border-bottom.png");
@@ -32,6 +38,12 @@ a {
   left: 0;
   width: 100%;
   border-top: 10px solid $white;
+  @include breakpoint(small only) {
+    height: 10px;
+  }
+  @include breakpoint(medium only) {
+    height: 20px;
+  }
 }
 .left-vert{
   background: #ffffff image-url("vertical-border.png");
@@ -40,6 +52,12 @@ a {
   height: 100%;
   position: fixed;
   top: 78px;
+  @include breakpoint(small only) {
+    width: 10px;
+  }
+  @include breakpoint(medium only) {
+    width: 20px;
+  }
 }
 .right-vert{
   background: #ffffff image-url("vertical-border-right.png");
@@ -49,18 +67,28 @@ a {
   position: fixed;
   top: 78px;
   right: 0;
+  @include breakpoint(small only) {
+    width: 10px;
+  }
+  @include breakpoint(medium only) {
+    width: 20px;
+  }
 }
-.logo{
+.logo__container{
   text-align: center;
   padding: 30px 0 $base-padding*3 0;
 }
 
+.logo__image{
+  width: 473px;
+}
+
 .divider{
   background: #c49243;
-  height: 14px;
+  height: 4px;
   width: 400px;
-  margin: 0 auto;
-  margin-bottom: $base-margin;
+  max-width: 100%;
+  margin: $base-margin auto;
 }
 .link-light{
   color: $blue-grey;
@@ -70,12 +98,50 @@ a {
   border: 3px solid #c7eae2;
 }
 .page-header{
-padding-top: 80px;
+  padding-top: 80px;
+  @include breakpoint(small only) {
+    padding: 20px;
+  }
+
+}
+.icons-list{
+  list-style-type: none;
+  text-align: center;
+  margin: 80px 0 80px 0;
+
+  &__icon{
+    max-width: 100px;
+  }
+
+  &__item{
+    display: inline-block;
+    @include breakpoint(small only) {
+      width: 50%;
+      margin: 0;
+    }
+    &:not(:last-child){
+      margin-right: 40px;
+      @include breakpoint(small only) {
+        margin: 0;
+      }
+    }
+  }
+}
+.hanging-quote-left{
+  @extend h1;
+  display: inline;
+  margin-left: -20px;
+}
+.quotation{
+  display: inline;
 }
 .nav{
   text-align: center;
+  margin-bottom: $base-margin*2;
   &__link{
-    padding: 0 $base-padding*2;
+    padding: 0 $base-padding*3;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
   }
 }
 .nav-buttons{
@@ -89,11 +155,27 @@ padding-top: 80px;
 .main-content{
   padding-left: 78px;
   padding-right: 78px;
+  padding-bottom: 10px;
+  @include breakpoint(small only) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include breakpoint(medium only) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 .content-container{
   background: $white;
   padding: $base-padding;
   margin-bottom: $base-margin*3;
+}
+
+.page-footer{
+  padding-bottom: 80px;
+  @include breakpoint(small only) {
+    padding: 20px;
+  }
 }
 
 .post{

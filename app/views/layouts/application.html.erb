@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
   <script src="https://use.typekit.net/sad6sqb.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
-</head>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,400,500,700" rel="stylesheet"></head>
 <body>
   <div class="top-horz">
   </div>
@@ -17,15 +17,15 @@
   </div>
 
   <header class="page-header">
-    <div class="logo">
-      <%= link_to image_tag("kayt-campbell-logo.png"), root_path %>
-    </div>
-    <div class="divider">
+    <div class="logo__container">
+      <%= link_to image_tag("kayt-campbell-logo2x.png", class: "logo__image"), root_path %>
     </div>
     <div class="nav">
       <%= link_to "Blog", root_path, class: "nav__link" %>
-      <%= link_to "About", root_path, class: "nav__link" %>
-      <%= link_to "Contact", root_path, class: "nav__link" %>
+      <%= link_to "About", about_path, class: "nav__link" %>
+      <%= link_to "Contact", contact_path, class: "nav__link" %>
+    </div>
+    <div class="divider">
     </div>
       <!-- <div class="row columns">
         <div class="nav-buttons">
@@ -57,7 +57,7 @@
       <% if current_page?(root_path) %>
         <!-- <h1>All Posts</h1> -->
       <% elsif current_page?(about_path) %>
-        <h1>About</h1>
+        <!-- <h1>About</h1> -->
       <% end %>
       <% flash.each do |name, msg| %>
         <%= content_tag(:div, msg, class: "alert") %>
