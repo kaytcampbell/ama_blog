@@ -1,12 +1,10 @@
 <%= @posts.each do |post| %>
-  <div class="content-container">
-    <div class="post-wrapper">
-      <h2 class="title"><%= link_to post.title, post %></h2>
-      <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>
-      <p>
-        <%= truncate(post.body, length: 600) %>
-      </p>
-      <button class="button"><%= link_to "Continue Reading", post %></button>
-    </div>
+  <div class="post__wrapper">
+    <h2 class="title"><%= link_to post.title, post %></h2>
+    <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>
+    <p>
+      <%= truncate(post.body, length: 600) %>
+    </p>
+    <button class="button"><%= link_to "Continue Reading", post %></button>
   </div>
 <% end %>

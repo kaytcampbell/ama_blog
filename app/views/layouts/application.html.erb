@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AmaBlog</title>
+  <title>AMA D&D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -18,15 +18,15 @@
 
   <header class="page-header">
     <div class="logo__container">
-      <%= link_to image_tag("kayt-campbell-logo2x.png", class: "logo__image"), root_path %>
+      <%= link_to image_tag("d-and-d-logo.png", class: "logo__image"), root_path %>
     </div>
+
+    <!--
     <div class="nav">
       <%= link_to "Blog", root_path, class: "nav__link" %>
       <%= link_to "About", about_path, class: "nav__link" %>
       <%= link_to "Contact", contact_path, class: "nav__link" %>
-    </div>
-    <div class="divider">
-    </div>
+    </div> -->
       <!-- <div class="row columns">
         <div class="nav-buttons">
           <button class="button"><%= link_to "All Posts", root_path %></button>
@@ -54,16 +54,33 @@
   </header>
   <main class="main-content">
     <div class="row column">
-      <% if current_page?(root_path) %>
-        <!-- <h1>All Posts</h1> -->
-      <% elsif current_page?(about_path) %>
-        <!-- <h1>About</h1> -->
-      <% end %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert") %>
-      <% end %>
+      <div class="divider">
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 column">
+        <% if current_page?(root_path) %>
+          <!-- <h1>All Posts</h1> -->
+        <% elsif current_page?(about_path) %>
+          <!-- <h1>About</h1> -->
+        <% end %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag(:div, msg, class: "alert") %>
+        <% end %>
 
-      <%= yield %>
+        <%= yield %>
+      </div>
+      <div class="large-4 column">
+        <h2>Recent Posts</h2>
+        <%= @posts.each do |post| %>
+          <p>
+            <strong><%= link_to post.title, post %></strong>
+            <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>
+          </p>
+        <% end %>
+        <div class="divider">
+        </div>
+      </div>
     </div>
   </main>
   <div class="right-vert">
