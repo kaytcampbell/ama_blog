@@ -72,12 +72,7 @@
       </div>
       <div class="large-4 column">
         <h2>Recent Posts</h2>
-        <%= @posts.each do |post| %>
-          <p>
-            <strong><%= link_to post.title, post %></strong>
-            <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>
-          </p>
-        <% end %>
+        
         <div class="divider">
         </div>
       </div>
