@@ -1,26 +1,26 @@
-<div class="content-container">
-  <%= image_tag @post.photo.url %>
-  <h2 class="title">
-    <%= @post.title %>
-  </h2>
+<% if @post.photo.present? %>
+  <%= image_tag @post.photo.url(:medium) %>
+<% end %>
+<h2 class="title">
+  <%= @post.title %>
+</h2>
 
-  <p class="date">
-    Submitted <%= time_ago_in_words(@post.created_at) %> Ago
-    <% if user_signed_in? %>
-      | <%= link_to 'Edit', edit_post_path(@post), class: "link-light" %>
-      | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
-    <% end %>
-  </p>
+<p class="date">
+  Submitted <%= time_ago_in_words(@post.created_at) %> Ago
+  <% if user_signed_in? %>
+    | <%= link_to 'Edit', edit_post_path(@post), class: "link-light" %>
+    | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
+  <% end %>
+</p>
 
-  <p class="body">
-    <%= @post.body %>
-  </p>
+<p class="body">
+  <%= @post.body %>
+</p>
 
-  <div class="comments">
-    <h3><%= @post.comments.count %> Comments</h3>
-    <%= render @post.comments %>
+<div class="comments">
+  <h3><%= @post.comments.count %> Comments</h3>
+  <%= render @post.comments %>
 
-    <h3>Add a Comment</h3>
-    <%= render "comments/form" %>
-  </div>
+  <h3>Add a Comment</h3>
+  <%= render "comments/form" %>
 </div>

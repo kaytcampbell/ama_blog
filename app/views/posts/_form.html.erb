@@ -28,6 +28,10 @@
     <% end %>
   </div>
   <div class="form__row">
+    <%= f.label :popular_post, "Popular post?" %>
+    <%= f.check_box :popular_post %>
+  </div>
+  <div class="form__row">
     <%= f.submit class: "button" %>
   </div>
 <% end %>
