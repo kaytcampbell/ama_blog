@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  
+
   def index
     @posts = Post.all.order('created_at DESC')
   end
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update(params[:post].permit(:title, :body))
+    if @post.update(params[:post].permit(:title, :body, :photo))
       redirect_to @post
     else
       render 'edit'
@@ -45,8 +45,16 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def delete_photo
+    @post = Post.find(params[:post_id])
+    @post.photo = nil
+    @post.save
+
+    redirect_to edit_post_path @post
+  end
+
   private
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :photo)
     end
 end
