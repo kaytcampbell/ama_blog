@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :posts do
-    resources :comments
     #resource :photo
     delete :photo, to: 'posts#delete_photo', as: 'photo_destroy'
   end

@@ -17,12 +17,4 @@
   <p class="body">
     <%= @post.body %>
   </p>
-
-  <div class="comments">
-    <h3><%= @post.comments.count %> Comments</h3>
-    <%= render @post.comments %>
-
-    <h3>Add a Comment</h3>
-    <%= render "comments/form" %>
-  </div>
 </div>
