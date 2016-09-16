@@ -16,15 +16,16 @@
   <div class="left-vert">
   </div>
   <header class="page-header">
+    <div class="row column">
+      <div class="nav">
+        <%= link_to "Blog", root_path, class: "nav__link" %>
+        <%= link_to "About", about_path, class: "nav__link" %>
+        <%= link_to "Contact", contact_path, class: "nav__link" %>
+      </div>
+    </div>
     <div class="logo__container">
       <%= link_to image_tag("d-and-d-logo.png", class: "logo__image"), root_path %>
     </div>
-    <!--
-    <div class="nav">
-      <%= link_to "Blog", root_path, class: "nav__link" %>
-      <%= link_to "About", about_path, class: "nav__link" %>
-      <%= link_to "Contact", contact_path, class: "nav__link" %>
-    </div> -->
       <!-- <div class="row columns">
         <div class="nav-buttons">
           <button class="button"><%= link_to "All Posts", root_path %></button>
