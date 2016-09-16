@@ -18,6 +18,20 @@
     <%= f.text_area :body %>
   </div>
   <div class="form__row">
+    <% if @post.photo.present? %>
+      <%= image_tag @post.photo.url %>
+      <%# link_to 'Delete', @post_path, @post.photo.destroy_photo %>
+      <%= link_to 'Delete', post_photo_destroy_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
+    <% else %>
+      <%= f.label :photo, "Photo" %>
+      <%= f.file_field :photo %>
+    <% end %>
+  </div>
+  <div class="form__row">
+    <%= f.label :popular_post, "Popular post?" %>
+    <%= f.check_box :popular_post %>
+  </div>
+  <div class="form__row">
     <%= f.submit class: "button" %>
   </div>
 <% end %>

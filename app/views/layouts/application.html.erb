@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AmaBlog</title>
+  <title>AMA D&D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+  <script src="https://use.typekit.net/sad6sqb.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,400,500,700" rel="stylesheet"></head>
 <body>
+  <div class="top-horz">
+  </div>
+  <div class="left-vert">
+  </div>
   <header class="page-header">
-    <div class="row">
-      <div class="large-6 columns">
-        <h1 class="logo"><%= link_to "AMA D&D", root_path %></h1>
-        <p class="sub-heading">Design and Development at the Alberta Motor Association</p>
+    <div class="row column">
+      <div class="nav">
+        <%= link_to "Blog", root_path, class: "nav__link" %>
+        <%= link_to "About", about_path, class: "nav__link" %>
+        <%= link_to "Contact", contact_path, class: "nav__link" %>
       </div>
-      <div class="large-6 columns">
+    </div>
+    <div class="logo__container">
+      <%= link_to image_tag("d-and-d-logo.png", class: "logo__image"), root_path %>
+    </div>
+      <!-- <div class="row columns">
         <div class="nav-buttons">
           <button class="button"><%= link_to "All Posts", root_path %></button>
           <% if user_signed_in? %>
@@ -24,6 +35,7 @@
           <% end %>
         </div>
       </div>
+    -->
       <!-- <ul>
         <li><%= link_to "Blog", root_path %></li>
         <li><%= link_to "About", about_path %></li>
@@ -38,22 +50,26 @@
       </p>
       <% end %>
     -->
-    </div>
   </header>
   <main class="main-content">
     <div class="row column">
-      <% if current_page?(root_path) %>
-        <!-- <h1>All Posts</h1> -->
-      <% elsif current_page?(about_path) %>
-        <h1>About</h1>
-      <% end %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert") %>
-      <% end %>
-
-      <%= yield %>
+      <div class="divider">
+      </div>
+    </div>
+    <% if current_page?(root_path) %>
+      <!-- <h1>All Posts</h1> -->
+    <% elsif current_page?(about_path) %>
+      <!-- <h1>About</h1> -->
+    <% end %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+    <%= yield %>
     </div>
   </main>
-
+  <div class="right-vert">
+  </div>
+  <div class="bottom-horz">
+  </div>
 </body>
 </html>
