@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment :photo, content_type: { content_type: /\Aimage\/.*\Z/ }
   has_many :popular_posts
+  belongs_to :user
+  delegate :username, to: :user, :allow_nil => true
 end
