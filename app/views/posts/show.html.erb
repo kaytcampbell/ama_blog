@@ -1,25 +1,27 @@
-<div class="large-12 columns">
-  <% if @post.photo.present? %>
-    <%= image_tag @post.photo.url(:medium) %>
-  <% end %>
-  <h2 class="title">
-    <%= @post.title %>
-  </h2>
+<div class="row">
+  <div class="large-6 columns large-centered">
+    <% if @post.photo.present? %>
+      <%= image_tag @post.photo.url(:large), class: "image--large" %>
+    <% end %>
+    <h2 class="title">
+      <%= @post.title %>
+    </h2>
 
-  <p class="date">
-    <small class="date">
-      <%= @post.created_at.strftime("%B %d, %Y") %>
-      <% if @post.username.present? %>
-        by <%= @post.username %>
-      <% end %>  
-      <% if user_signed_in? %>
-        | <%= link_to 'Edit', edit_post_path(@post), class: "link-light" %>
-        | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
-      <% end %>
-    </small>
-  </p>
+    <p class="date">
+      <small class="date">
+        <%= @post.created_at.strftime("%B %d, %Y") %>
+        <% if @post.username.present? %>
+          by <%= @post.username %>
+        <% end %>
+        <% if user_signed_in? %>
+          | <%= link_to 'Edit', edit_post_path(@post), class: "link-light" %>
+          | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
+        <% end %>
+      </small>
+    </p>
 
-  <p class="body">
-    <%= @post.body %>
-  </p>
+    <p class="body">
+      <%= @post.body %>
+    </p>
+  </div>
 </div>
