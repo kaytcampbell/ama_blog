@@ -9,7 +9,12 @@
         <% end %>
         <div class="large-8 columns">
           <h2 class="title"><%= link_to post.title, post %></h2>
-          <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>
+          <small class="date">
+            <%= post.created_at.strftime("%B %d, %Y") %>
+            <% if post.username.present? %>
+              by <%= post.username %>
+            <% end %>
+            </small>
           <p>
             <%= truncate(post.body, length: 600) %>
           </p>
