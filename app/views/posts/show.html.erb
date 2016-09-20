@@ -7,11 +7,16 @@
   </h2>
 
   <p class="date">
-    Submitted <%= time_ago_in_words(@post.created_at) %> Ago
-    <% if user_signed_in? %>
-      | <%= link_to 'Edit', edit_post_path(@post), class: "link-light" %>
-      | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
-    <% end %>
+    <small class="date">
+      <%= @post.created_at.strftime("%B %d, %Y") %>
+      <% if @post.username.present? %>
+        by <%= @post.username %>
+      <% end %>  
+      <% if user_signed_in? %>
+        | <%= link_to 'Edit', edit_post_path(@post), class: "link-light" %>
+        | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you Sure?'}, class: "link-light" %>
+      <% end %>
+    </small>
   </p>
 
   <p class="body">
