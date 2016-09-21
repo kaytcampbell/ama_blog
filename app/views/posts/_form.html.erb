@@ -14,8 +14,8 @@
     <%= f.text_field :title %>
   </div>
   <div class="form__row">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+      <%= f.cktext_area :body, ckeditor: { language: 'eng'} %>
+
   </div>
   <div class="form__row">
     <% if @post.photo.present? %>
