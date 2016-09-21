@@ -31,6 +31,8 @@ gem "paperclip", "~> 5.0.0"
 
 gem 'ckeditor'
 
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
