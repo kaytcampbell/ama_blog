@@ -18,28 +18,23 @@
   <header class="page-header">
     <div class="row">
       <div class="nav">
-        <% if user_signed_in? %>
-          <div class="large-6 columns">
-            <span class="nav__link"><%= current_user.username %></span>
-            <%= link_to "New Post", new_post_path, class: "nav__link" %>
-            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav__link") %>
+        <div class="large-4 columns">
+          <div class="logo__container">
+            <%= link_to image_tag("dandd-white.png", class: "logo__image"), root_path %>
           </div>
-          <div class="large-6 columns text-right">
+        </div>
+        <div class="large-8 columns text-right nav__links">
+          <div class="">
             <%= link_to "Blog", root_path, class: "nav__link" %>
             <%= link_to "About", about_path, class: "nav__link" %>
             <%= link_to "Contact", contact_path, class: "nav__link" %>
+            <% if user_signed_in? %>
+              <%= link_to "New Post", new_post_path, class: "nav__link" %>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav__link") %>
+            <% end %>
           </div>
-        <% else %>
-          <div class="column text-right">
-            <%= link_to "Blog", root_path, class: "nav__link" %>
-            <%= link_to "About", about_path, class: "nav__link" %>
-            <%= link_to "Contact", contact_path, class: "nav__link" %>
-          </div>
-        <% end %>
+        </div>
       </div>
-    </div>
-    <div class="logo__container">
-      <%= link_to image_tag("d-and-d-logo.png", class: "logo__image"), root_path %>
     </div>
       <!-- <div class="row columns">
         <div class="nav-buttons">

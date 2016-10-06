@@ -1,31 +1,91 @@
 <div class="row">
   <div class="large-8 column">
-    <% @posts.each do |post| %>
-      <div class="row post__wrapper">
-        <% if post.photo.present? %>
-          <div class="large-4 columns">
-            <%= image_tag post.photo.url %>
-          </div>
-        <% end %>
-        <div class="large-8 columns">
-          <h2 class="title"><%= link_to post.title, post %></h2>
-          <small class="date">
-            <%= post.created_at.strftime("%B %d, %Y") %>
-            <% if post.username.present? %>
-              by <%= post.username %>
-            <% end %>
-            </small>
-          <p>
-            <%= truncate(strip_tags(post.body).html_safe, length: 600) %>
-          </p>
-          <button class="button"><%= link_to "Continue Reading", post %></button>
-        </div>
+    <div class="post__wrapper feature-post">
+      <% if @first_post.photo.present? %>
+        <%= image_tag @first_post.photo.url, class: "feature-post__image" %>
+      <% end %>
+      <div class="feature-post__post-bg">
+        <h2 class="feature-post__title"><%= link_to @first_post.title, @first_post %></h2>
+        <small class="date">
+          <%= @first_post.created_at.strftime("%B %d, %Y") %>
+          <% if @first_post.username.present? %>
+            by <%= @first_post.username %>
+          <% end %>
+          </small>
+        <p>
+          <%= truncate(strip_tags(@first_post.body).html_safe, length: 100) %>
+        </p>
+        <%= link_to "Read Article", @first_post %>
       </div>
+    </div>
+    <% @posts.in_groups_of(2, false).each do |posts| %>
+      <% if posts.size == 2 %>
+        <div class="row">
+          <div class="large-6 columns">
+            <div class="post__wrapper secondary-post">
+              <% if posts.first.photo.present? %>
+                <%= link_to image_tag(posts.first.photo.url), @post, class: "secondary-post__image-wrapper" %>
+              <% end %>
+              <h2 class="secondary-post__title"><%= link_to truncate(posts.first.title, length: 45), @post %></h2>
+              <small class="date">
+                <%= posts.first.created_at.strftime("%B %d, %Y") %>
+                <% if posts.first.username.present? %>
+                  by <%= posts.first.username %>
+                <% end %>
+                </small>
+              <p>
+                <%= truncate(strip_tags(posts.first.body).html_safe, length: 100) %>
+              </p>
+              <%= link_to "Read Article", @post %>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="post__wrapper secondary-post">
+              <% if posts.last.photo.present? %>
+                <%= link_to image_tag(posts.last.photo.url), @post, class: "secondary-post__image-wrapper" %>
+              <% end %>
+              <h2 class="secondary-post__title"><%= link_to truncate(posts.last.title, length: 45), @post %></h2>
+              <small class="date">
+                <%= posts.last.created_at.strftime("%B %d, %Y") %>
+                <% if posts.last.username.present? %>
+                  by <%= posts.last.username %>
+                <% end %>
+                </small>
+              <p>
+                <%= truncate(strip_tags(posts.last.body).html_safe, length: 100) %>
+              </p>
+              <%= link_to "Read Article", @post %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="large-6 columns end">
+            <div class="post__wrapper secondary-post">
+              <% if posts.first.photo.present? %>
+                <%= link_to image_tag(posts.first.photo.url), @post, class: "secondary-post__image-wrapper" %>
+              <% end %>
+              <h2 class="secondary-post__title"><%= link_to truncate(posts.first.title, length: 45), @post %></h2>
+              <small class="date">
+                <%= posts.first.created_at.strftime("%B %d, %Y") %>
+                <% if posts.first.username.present? %>
+                  by <%= posts.first.username %>
+                <% end %>
+                </small>
+              <p>
+                <%= truncate(strip_tags(posts.first.body).html_safe, length: 100) %>
+              </p>
+              <%= link_to "Read Article", @post %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
+    <%= paginate @posts %>
   </div>
   <div class="large-4 column">
     <h2>Favourite Posts</h2>
-    <% @posts.each do |post| %>
+    <% @all_posts.each do |post| %>
       <% if post.popular_post %>
         <strong><%= link_to post.title, post %></strong>
         <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>

@@ -19,11 +19,12 @@ h3{
   text-transform: uppercase;
 }
 .top-horz{
-  background: #eeeeee;
+  background: #000000;
   background-repeat: repeat-x;
   height: 28px;
   position: fixed;
   width: 100%;
+  z-index: 1;
   @include breakpoint(small only) {
     height: 10px;
   }
@@ -32,14 +33,14 @@ h3{
   }
 }
 .bottom-horz{
-  background: #eeeeee;
+  background: #000000;
   background-repeat: repeat-x;
   height: 28px;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-
+  z-index: 1;
   @include breakpoint(small only) {
     height: 10px;
   }
@@ -48,12 +49,13 @@ h3{
   }
 }
 .left-vert{
-  background: #eeeeee;
+  background: #000000;
   background-repeat: repeat-y;
   width: 28px;
   height: 100%;
   position: fixed;
   top: 0;
+  z-index: 1;
   @include breakpoint(small only) {
     width: 10px;
   }
@@ -62,13 +64,14 @@ h3{
   }
 }
 .right-vert{
-  background: #eeeeee;
+  background: #000000;
   background-repeat: repeat-y;
   width: 28px;
   height: 100%;
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 1;
   @include breakpoint(small only) {
     width: 10px;
   }
@@ -77,8 +80,6 @@ h3{
   }
 }
 .logo__container{
-  text-align: center;
-  padding: 30px 0 0 0;
   @include breakpoint(small only){
     padding: $base-margin 0 0 0;
   }
@@ -115,7 +116,8 @@ h3{
   border: 5px solid #eeeeee;
 }
 .page-header{
-  padding-top: 50px;
+  padding-top: 28px;
+  background: #333333;
 }
 
 .title a{
@@ -158,9 +160,18 @@ h3{
 .nav{
   padding-left: $base-padding*6;
   padding-right: $base-padding*6;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow: auto;
+  position: relative;
+  @include clearfix;
   @include breakpoint(medium down){
     text-align: center;
     padding: 0;
+  }
+  &__links{
+    @include vertical-center;
+    right: $base-padding*6;
   }
   &__link{
     padding: 0 $base-padding*3;
@@ -168,6 +179,7 @@ h3{
     font-weight: 100;
     text-transform: uppercase;
     font-size: 23px;
+    color: $white;
     &:last-child{
       padding-right: 0;
     }
@@ -226,5 +238,32 @@ h3{
   }
   &__wrapper{
     margin-bottom: $base-margin*3;
+  }
+}
+
+.feature-post{
+  position: relative;
+  &__image{
+    width: 100%;
+  }
+  &__post-bg{
+    @include absolute-center;
+    overflow: auto;
+    width: 40%;
+    background: $white;
+    padding: 30px;
+  }
+  &__title{
+    line-height: 2.3rem;
+  }
+}
+
+.secondary-post{
+  &__image-wrapper{
+    display: block;
+    margin-bottom: $base-margin;
+  }
+  &__title{
+    line-height: 2.3rem;
   }
 }
