@@ -24,9 +24,9 @@
           <div class="large-6 columns">
             <div class="post__wrapper secondary-post">
               <% if posts.first.photo.present? %>
-                <%= link_to image_tag(posts.first.photo.url), @post, class: "secondary-post__image-wrapper" %>
+                <%= link_to image_tag(posts.first.photo.url), posts.first, class: "secondary-post__image-wrapper" %>
               <% end %>
-              <h2 class="secondary-post__title"><%= link_to truncate(posts.first.title, length: 45), @post %></h2>
+              <h2 class="secondary-post__title"><%= link_to truncate(posts.first.title, length: 45), posts.first %></h2>
               <small class="date">
                 <%= posts.first.created_at.strftime("%B %d, %Y") %>
                 <% if posts.first.username.present? %>
@@ -36,15 +36,15 @@
               <p>
                 <%= truncate(strip_tags(posts.first.body).html_safe, length: 100) %>
               </p>
-              <%= link_to "Read Article", @post %>
+              <%= link_to "Read Article", posts.first %>
             </div>
           </div>
           <div class="large-6 columns">
             <div class="post__wrapper secondary-post">
               <% if posts.last.photo.present? %>
-                <%= link_to image_tag(posts.last.photo.url), @post, class: "secondary-post__image-wrapper" %>
+                <%= link_to image_tag(posts.last.photo.url), posts.last, class: "secondary-post__image-wrapper" %>
               <% end %>
-              <h2 class="secondary-post__title"><%= link_to truncate(posts.last.title, length: 45), @post %></h2>
+              <h2 class="secondary-post__title"><%= link_to truncate(posts.last.title, length: 45), posts.last %></h2>
               <small class="date">
                 <%= posts.last.created_at.strftime("%B %d, %Y") %>
                 <% if posts.last.username.present? %>
@@ -54,7 +54,7 @@
               <p>
                 <%= truncate(strip_tags(posts.last.body).html_safe, length: 100) %>
               </p>
-              <%= link_to "Read Article", @post %>
+              <%= link_to "Read Article", posts.last %>
             </div>
           </div>
         </div>
@@ -84,6 +84,8 @@
     <%= paginate @posts %>
   </div>
   <div class="large-4 column">
+    <div class="divider show-for-small-only">
+    </div>
     <h2>Favourite Posts</h2>
     <% @all_posts.each do |post| %>
       <% if post.popular_post %>
@@ -91,7 +93,7 @@
         <small class="date"><%= post.created_at.strftime("%B %d, %Y") %></small>
       <% end %>
     <% end %>
-    <div class="divider">
+    <div class="divider show-for-medium">
     </div>
   </div>
 </div>
